@@ -11,7 +11,7 @@ include 'db.php';
 	// ligação à base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 // criar query numa string
-$query = "SELECT id,name,password_digest FROM users WHERE email=$email";
+$query = "SELECT id,name,password_digest FROM users WHERE email='$email'";
 
 
 //echo "<script type='text/javascript'>alert('SELECT count(*) FROM users WHERE email=\'".$email."\'');</script>";
@@ -20,7 +20,7 @@ $result = mysql_query($query,$db);
 //var_dump($result);
 
 $nrows = mysql_num_rows($result); 
-
+echo $nrows;
 if($nrows>0){
 
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
