@@ -1,5 +1,5 @@
 <?php
-
+//FALTA VERIFICAR PASSWORD VAZIA OU NAO
 
 include 'db.php';
 	session_start();
@@ -28,18 +28,18 @@ if($nrows>0){
  		echo "ok";
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
- 		//header("Location:index.php");
+ 		header("Location:index.php");
  	}else
  	{
  		echo "not ok";
  		$_SESSION['error']='1';
- 		//header("Location:login.php?error=1&email=$email");
+ 		header("Location:login.php?error=1&email=$email");
  	}
 }else
 {
 	echo "OUT";
 	$_SESSION['error']='2';
-	//header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
+	header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
 }
 
 ?>
