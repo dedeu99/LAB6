@@ -21,7 +21,6 @@ $result = mysql_query($query,$db);
 
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
-	echo "IN";
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
  	if(strcmp($password,$tuple['password_digest'])==0){
  		

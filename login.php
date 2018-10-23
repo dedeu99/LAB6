@@ -24,6 +24,8 @@
 
 
 	if(isset($_SESSION['error'])){
+
+		echo "IN";
 		switch($_SESSION['error']){
 			case 1:
 				$message="Incorrect Password";
