@@ -47,6 +47,8 @@ $nrows = mysql_num_rows($result);
 	
 if($nrows==0)
 {
+	$password=hash('sha512',$password);
+	$password2=$password;
 	$query = "INSERT INTO users (name,email,created_at,updated_at,password_digest,remember_digest,admin) VALUES ('$name','$email',NOW(),NOW(),'$password','$password2',0)";	
 	$result=@mysql_query($query,$db);
 
