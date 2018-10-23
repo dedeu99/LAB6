@@ -30,13 +30,13 @@ if($nrows>0){
  		header("Location:index.php");
  	}else
  	{
- 		$_SESSION['error']='1';
- 		header("Location:login.php?error=1&email=$email");
+ 		$_SESSION['error']=1;
+ 		header("Location:login.php?email=$email");
  	}
 }else
 {
-	$_SESSION['error']='2';
-	header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
+	$_SESSION['error']=2;
+	header("Location:login.php?email=$email");
 }
 
 ?>

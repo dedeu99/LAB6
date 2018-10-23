@@ -23,7 +23,7 @@
 	$message="";
 
 
-	if(isset($_SESSION['error']))
+	if(isset($_SESSION['error'])){
 		switch($_SESSION['error']){
 			case 1:
 				$message="Incorrect Password";
@@ -37,6 +37,7 @@
 			$template->setVariable('MESSAGE_HIDDEN',"hidden");
 
 		}
+	}
 	$template->setVariable('MESSAGE', $message);
 	$template->parseCurrentBlock();
 
