@@ -15,7 +15,7 @@ $template->loadTemplatefile('register_template.html',true, true);
 
 $template->setCurrentBlock("REGISTERFORM");
 
-/*$template->setVariable('NAME', $name );
+$template->setVariable('NAME', $name );
 $template->setVariable('EMAIL', $email);
 
 $template->setVariable('MESSAGE_HIDDEN',"");
@@ -47,7 +47,7 @@ switch($error){
 
 }
 $template->setVariable('MESSAGE', $message);
-*/$template->parseCurrentBlock();
+$template->parseCurrentBlock();
 
 $template->show();
 ?>
