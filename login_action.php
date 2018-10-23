@@ -37,7 +37,7 @@ if(nrows>0){
 }else
 {
 	$_SESSION['error']='2';
-	header("Location:login.php?error=2&email=$email");
+	header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
 }
 
 ?>
