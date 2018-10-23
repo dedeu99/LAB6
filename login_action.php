@@ -11,7 +11,7 @@ include 'db.php';
 	// ligação à base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 // criar query numa string
-$query = "SELECT id,name,password FROM users WHERE email=$email";
+$query = "SELECT id,name,password_digest FROM users WHERE email=$email";
 
 
 //echo "<script type='text/javascript'>alert('SELECT count(*) FROM users WHERE email=\'".$email."\'');</script>";
@@ -24,7 +24,7 @@ $nrows = mysql_num_rows($result);
 if(nrows>0){
 
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
- 	if(strcmp(hash('sha512',$password),$tuple['password'])==0){
+ 	if(strcmp(hash('sha512',$password),$tuple['password_digest'])==0){
  		
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
