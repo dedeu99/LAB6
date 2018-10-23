@@ -28,16 +28,16 @@ if($nrows>0){
  		
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
- 		header("Location:index.php");
+ 		//header("Location:index.php");
  	}else
  	{
  		$_SESSION['error']='1';
- 		header("Location:login.php?error=1&email=$email");
+ 		//header("Location:login.php?error=1&email=$email");
  	}
 }else
 {
 	$_SESSION['error']='2';
-	header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
+	//header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
 }
 
 ?>
