@@ -21,7 +21,7 @@ $result = @mysql_query($query,$db);
 
 $nrows = mysql_num_rows($result); 
 
-if(nrows>0){
+if($nrows>0){
 
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
  	if(strcmp(hash('sha512',$password),$tuple['password_digest'])==0){
