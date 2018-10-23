@@ -32,12 +32,12 @@ if(nrows>0){
  	}else
  	{
  		$_SESSION['error']='1';
- 		header("Location:login.php?email=$email");
+ 		header("Location:login.php?error=1&email=$email");
  	}
 }else
 {
 	$_SESSION['error']='2';
-	header("Location:login.php?email=$email");
+	header("Location:login.php?error=2&email=$email");
 }
 
 ?>
