@@ -11,7 +11,7 @@ include 'db.php';
 	// ligação à base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 // criar query numa string
-$query = "SELECT id,name,password FROM users WHERE email='$email'";
+$query = "SELECT id,name,password FROM users WHERE email=$email";
 
 
 //echo "<script type='text/javascript'>alert('SELECT count(*) FROM users WHERE email=\'".$email."\'');</script>";
