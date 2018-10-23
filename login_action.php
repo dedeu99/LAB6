@@ -22,20 +22,22 @@ $result = mysql_query($query,$db);
 $nrows = mysql_num_rows($result); 
 echo $nrows;
 if($nrows>0){
-
+	echo "IN";
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
  	if(strcmp(hash('sha512',$password),$tuple['password_digest'])==0){
- 		
+ 		echo "ok";
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
  		//header("Location:index.php");
  	}else
  	{
+ 		echo "not ok";
  		$_SESSION['error']='1';
  		//header("Location:login.php?error=1&email=$email");
  	}
 }else
 {
+	echo "OUT";
 	$_SESSION['error']='2';
 	//header("Location:login.php?error=2&email=$email&pw=$password&nr=$nrows");
 }
