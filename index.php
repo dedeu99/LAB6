@@ -5,12 +5,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 require_once "HTML/Template/IT.php";
 include 'db.php';
-// ligação à base de dados
-$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
- // criar query numa string
- $query = "SELECT * FROM microposts ORDER BY created_at DESC";
- // executar a query
- $result = @ mysql_query($query,$db ); 
+ 
 
 
 // Cria um novo objecto template
@@ -19,7 +14,7 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 if(isset($_SESSION['name']))
 	true;
  // Carrega o template Filmes2_TemplateIT.tpl
- $template->loadTemplatefile('index_template.html',true, true); 
+$template->loadTemplatefile('index_template.html',true, true); 
 
 $template->setVariable('hidden',loggedin?'hidden':'');
 $template->setVariable('hidden2',loggedin?'':'hidden');
@@ -28,6 +23,13 @@ $template->setVariable('USERNAME',loggedin?$_SESSION['name']:'');
 
 
 
+
+// ligação à base de dados
+$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
+ // criar query numa string
+ $query = "SELECT * FROM microposts ORDER BY created_at DESC";
+ // executar a query
+ $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 for($i=0; $i<$nrows; $i++) {
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
