@@ -19,8 +19,8 @@ if(isset($_SESSION['name']))
  // Carrega o template Filmes2_TemplateIT.tpl
 $template->loadTemplatefile('index_template.html',true, true); 
 
-$template->setVariable('hidden',loggedin?'hidden':'');
-$template->setVariable('hidden2',loggedin?'':'hidden');
+$template->setVariable('hidden',loggedin?'':'hidden');
+$template->setVariable('hidden2',loggedin?'hidden':'');
 $template->setVariable('USERNAME',loggedin?$_SESSION['name']:'');
 
 
