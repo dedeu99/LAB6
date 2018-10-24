@@ -3,7 +3,7 @@
 
 	header('Content-Type: text/html; charset=utf-8');
 	require_once "HTML/Template/IT.php";
-
+	session_start();
 	$email=$_GET['email'];
 	
 	//{MESSAGE_HIDDEN}
@@ -24,8 +24,7 @@
 
 
 	if(isset($_SESSION['error'])){
-
-		echo "IN";
+			
 		switch($_SESSION['error']){
 			case 1:
 				$message="Incorrect Password";

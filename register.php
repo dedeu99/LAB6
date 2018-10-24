@@ -12,7 +12,7 @@ $error=$_GET['error'];
 // Cria um novo objecto template
 $template = new HTML_Template_IT('.'); 
 $template->loadTemplatefile('register_template.html',true, true); 
-
+0
 $template->setCurrentBlock("REGISTERFORM");
 
 $template->setVariable('NAME', $name );
