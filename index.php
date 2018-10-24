@@ -1,16 +1,19 @@
 	
 <?php
-session_start();
+
 header('Content-Type: text/html; charset=utf-8');
 
 require_once "HTML/Template/IT.php";
 include 'db.php';
- 
+session_start(); 
 
 
 // Cria um novo objecto template
  $template = new HTML_Template_IT('.'); 
  $loggedin=false;
+
+
+ echo isset($_SESSION['name'])?$_SESSION['name']:'NO SESSION ATM';
 if(isset($_SESSION['name']))
 	true;
  // Carrega o template Filmes2_TemplateIT.tpl
