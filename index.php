@@ -1,5 +1,6 @@
 	
 <?php
+session_start();
 header('Content-Type: text/html; charset=utf-8');
 
 require_once "HTML/Template/IT.php";
@@ -14,10 +15,18 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
 // Cria um novo objecto template
  $template = new HTML_Template_IT('.'); 
-
-
+ $loggedin=false;
+if(isset($_SESSION['name']))
+	true;
  // Carrega o template Filmes2_TemplateIT.tpl
  $template->loadTemplatefile('index_template.html',true, true); 
+
+$template->setVariable('hidden',loggedin?'hidden':'');
+$template->setVariable('hidden2',loggedin?'':'hidden');
+$template->setVariable('USERNAME',loggedin?$_SESSION['name']:'');
+
+
+
 
 $nrows = mysql_num_rows($result); 
 for($i=0; $i<$nrows; $i++) {

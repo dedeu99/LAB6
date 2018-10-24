@@ -27,8 +27,6 @@ if(strlen($password)<=0 || strlen($password2)<=0 || strcmp($password,$password2)
 else{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CHECK FOR PASSWORD LENGTH
 
-
-
 	//header("Location: register_success.html"); //TO REMOVE
 
 
