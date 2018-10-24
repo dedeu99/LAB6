@@ -13,7 +13,7 @@ session_start();
  $loggedin=false;
 
 
- echo isset($_SESSION['name'])?$_SESSION['name']:'NO SESSION ATM';
+ 
 if(isset($_SESSION['name']))
 	$loggedin= true;
  // Carrega o template Filmes2_TemplateIT.tpl

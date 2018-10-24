@@ -13,7 +13,7 @@
       <a class="navbar-brand" href="index.php">
         <img src="img/img.jpg" style="width:40px;" alt="Logo">
       </a>
-      <ul hidden class="navbar-nav mr-auto">
+      <ul {hidden} class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Option 1</a>
         </li>
@@ -26,17 +26,17 @@
       </ul>
 
 
-      <div class="dropdown" hidden>
+      <div class="dropdown" {hidden}>
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-    {USER}
+    {USERNAME}
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">Action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Log Out</a>
         </div>
       </div> 
-      <ul class="navbar-nav" >
+      <ul class="navbar-nav" {hidden2}>
         <li class="nav-item">
           <a class="nav-link" href="login.php">Login</a>
         </li>
