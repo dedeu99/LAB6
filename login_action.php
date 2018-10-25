@@ -1,7 +1,8 @@
 <?php
 //FALTA VERIFICAR PASSWORD VAZIA OU NAO
-
+session_start();
 include 'db.php';
+
 	$email=$_POST['email'];
 	$password=hash('sha512',$_POST['password']);
 
