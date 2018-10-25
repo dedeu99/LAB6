@@ -9,13 +9,11 @@ session_start();
 
 
 // Cria um novo objecto template
- $template = new HTML_Template_IT('.'); 
- $loggedin=false;
-
-
+$template = new HTML_Template_IT('.'); 
+$loggedin=false;
  
 if(isset($_SESSION['name'])){
-echo "it is set";
+	echo "loggedin> $loggedin";
 	$loggedin= true;
 }
  // Carrega o template Filmes2_TemplateIT.tpl
