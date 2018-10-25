@@ -34,7 +34,7 @@ print_r($domain);
 
 echo PHP_EOL.basename($domain[path]).PHP_EOL*/
 var_dump(basename($domain[path]));
-if(strcmp(basename($domain[path]),"index.html")==0){
+if(strcmp(basename($domain[path]),"index.php")==0){
 
 	session_destroy();
 	$_SESSION = array();
