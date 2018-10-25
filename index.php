@@ -47,6 +47,18 @@ for($i=0; $i<$nrows; $i++) {
 	//echo "<script type='text/javascript'>alert('$message');</script>";
  	// trabalha com o bloco FILMES do template
  	$template->setCurrentBlock("POSTS");
+
+ 	if($_SESSION['id']==$tuple['user_id']){
+ 		$template->setVariable('UPDATEHIDDEN', '');
+ 		$template->setVariable('MICROID',$tuple[id]);
+ 	}else
+ 	{
+ 		$template->setVariable('UPDATEHIDDEN', 'hidden');
+ 		$template->setVariable('MICROID','-1');
+ 	}
+
+
+
  	$template->setVariable('USER', $tuple2['name'] );
 
  	$template->setVariable('USERID', $tuple['user_id']);
