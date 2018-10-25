@@ -14,8 +14,10 @@ session_start();
 
 
  
-if(isset($_SESSION['name']))
+if(isset($_SESSION['name'])){
+echo "it is set";
 	$loggedin= true;
+}
  // Carrega o template Filmes2_TemplateIT.tpl
 $template->loadTemplatefile('index_template.html',true, true); 
 
