@@ -12,28 +12,26 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
       <a class="navbar-brand" href="index.php">
         <img src="img/img.jpg" style="width:40px;" alt="Logo">
-      </a>
+              </a>
       <ul {hidden} class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Option 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Option 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Option3</a>
+          <a class="nav-link" href="blog.php">Post a new message</a>
         </li>
       </ul>
 
 
       <div class="dropdown" {hidden}>
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+
+              <span class="rounded-circle">
+                <img src="img/user{USERID}.jpg" style="width:40px;" alt="User Image">
+              </span>
     {USERNAME}
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Profile</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logout.php">Log Out</a>
+          <a class="dropdown-item" href="logout_action.php">Log Out</a>
         </div>
       </div> 
       <ul class="navbar-nav" {hidden2}>
@@ -124,6 +122,11 @@
             <p>{UPDATED}</p>
           </div>
           <div class="col-sm-9">
+            <div class="row justify-content-sm-end">
+              <button class="btn btn-secondary">
+                Update
+              </button>
+            </div>
             <br>
             <p>{MICROPOST}</p>
           </div>

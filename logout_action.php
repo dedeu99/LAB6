@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
 header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: private, no-store, max-age=0, no-cache, must-revalidate, post-check=0, pre-check=0");
@@ -31,10 +34,14 @@ print_r($domain);
 
 echo PHP_EOL.basename($domain[path]).PHP_EOL*/
 
-if(strcmp(basename($domain[path]),"register.php")==0){
+if(strcmp(basename($domain[path]),"index.php")==0){
+
+	session_destroy();
+	$_SESSION = array();
+
 	$template->setVariable('MSGBACKGROUND', 'success' );
 	$name=$_GET['name'];
-	$template->setVariable('MESSAGE',"User $name has been created sucessfully");
+	$template->setVariable('MESSAGE',"User $name has logged out sucessfully");
 }
 else{
 	$template->setVariable('MSGBACKGROUND', 'danger' );
