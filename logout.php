@@ -2,7 +2,7 @@
 
 header('Refresh: 5; url=index.php');
 
-
-$_SESSION = array();
-
+session_start();
+//$_SESSION = array();
+session_destroy();
 ?>
