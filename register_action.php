@@ -18,15 +18,7 @@ if(!ctype_alnum($name)) {
 	die();
 }
 
-$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
-$query = "SELECT name FROM users WHERE name='$name'";
-$result = @mysql_query($query,$db);
-$nrows = mysql_num_rows($result); 
-	
-if($nrows!=0){
-	header("Location:register.php?error=11&name=$name&email=$email");//ERROR11
-	die();
-}
+
 
 
 
@@ -41,11 +33,9 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	die();
 }
 
-
+$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 $query = "SELECT email FROM users WHERE email='$email'";
-
 $result = @mysql_query($query,$db); 
-
 $nrows = mysql_num_rows($result); 
 	
 if($nrows!=0){
@@ -56,12 +46,12 @@ if($nrows!=0){
 
 
 
+
+
 if(strlen($password)<=0){
 	header("Location: register.php?error=8&name=$name&email=$email");//ERROR8
 	die();
 }
-
-
 
 if(strlen($password)<$min_password_length){
 	header("Location: register.php?error=10&name=$name&email=$email&chars=$min_password_length");//ERROR10

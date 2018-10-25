@@ -29,7 +29,7 @@ switch($error){
 	break;
 
 	case 3:
-		$message="Please make sure your password is filled and the confirmation matches";
+		$message="Password confirmation does not match password";
 	break;
 
 	case 4:
@@ -41,7 +41,7 @@ switch($error){
 	break;
 
 	case 6:
-		$message="name must only contain letters and numbers";
+		$message="Name must only contain letters and numbers";
 	break;
 
 	case 7:
@@ -61,9 +61,6 @@ switch($error){
 		$message="Your password must be at least $i characters long";
 	break;
 
-	case 11:
-		$message="Name is already in use.Please choose a diferent one";
-	break;
 
 	default:
 	$template->setVariable('MESSAGE_HIDDEN',"hidden");
