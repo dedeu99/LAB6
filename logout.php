@@ -1,5 +1,8 @@
 <?php
 
-session_destroy();
+header('Refresh: 5; url=index.php');
+
+
+$_SESSION = array();
 
 ?>

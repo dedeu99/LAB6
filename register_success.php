@@ -6,7 +6,6 @@ header("Cache-Control: private, no-store, max-age=0, no-cache, must-revalidate, 
 //header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header("Connection: close");
-header('Content-Type: text/html; charset=utf-8');
 header('Refresh: 5; url=index.php');
 
 require_once "HTML/Template/IT.php";
