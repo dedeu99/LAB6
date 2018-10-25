@@ -23,7 +23,7 @@ $template->loadTemplatefile('index_template.html',true, true);
 $template->setVariable('hidden',$loggedin?'':'hidden');
 $template->setVariable('hidden2',$loggedin?'hidden':'');
 $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
-$template->setVariable('USERID',$_SESSION['id']);
+$template->setVariable('USER_ID',$_SESSION['id']);
 
 
 
