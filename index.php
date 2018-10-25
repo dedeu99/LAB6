@@ -12,17 +12,18 @@ session_start();
 $template = new HTML_Template_IT('.'); 
 $loggedin=false;
  
-if(isset($_SESSION['name'])){
+if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 	$loggedin= true;
 }
 
-echo "loggedin: ".var_dump($loggedin);
+var_dump($_SESSION['id']);
  // Carrega o template Filmes2_TemplateIT.tpl
 $template->loadTemplatefile('index_template.html',true, true); 
 
 $template->setVariable('hidden',$loggedin?'':'hidden');
 $template->setVariable('hidden2',$loggedin?'hidden':'');
 $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
+$template->setVariable('USERID',$loggedin?$_SESSION['id']:'');
 
 
 
