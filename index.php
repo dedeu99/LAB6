@@ -13,9 +13,10 @@ $template = new HTML_Template_IT('.');
 $loggedin=false;
  
 if(isset($_SESSION['name'])){
-	echo "loggedin> $loggedin";
 	$loggedin= true;
 }
+
+echo "loggedin: ".var_dump($loggedin);
  // Carrega o template Filmes2_TemplateIT.tpl
 $template->loadTemplatefile('index_template.html',true, true); 
 
