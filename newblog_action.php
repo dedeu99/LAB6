@@ -8,7 +8,7 @@ if(!isset($_SESSION['name']) || !isset($_SESSION['id'])){
 }
 
 $userid=$_SESSION['id'];
-$content=$_POST['content'];
+$content=$_POST['message'];
 
 
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
