@@ -32,9 +32,13 @@ print_r($domain);
 echo PHP_EOL.basename($domain[path]).PHP_EOL*/
 if(isset($_SESSION['id']) || isset($_SESSION['name'])) {
 
-	session_destroy();
+	
 	$_SESSION = array();
-
+	if (isset($_COOKIE[session_name()])) 
+  	{
+  	  setcookie(session_name(), '', time()-42000, '/');
+  	}
+	session_destroy();
 	$template->setVariable('MSGBACKGROUND', 'success' );
 	$name=$_GET['name'];
 	$template->setVariable('MESSAGE',"User $name has logged out sucessfully");
