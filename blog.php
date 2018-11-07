@@ -17,7 +17,9 @@ $userid=$_SESSION['id'];
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
 $message="";
-if(isset($_POST['POST_ID'])){
+$action="newblog_action.php";
+if(isset($_GET['POST_ID'])){
+	$action="updateblog_action.php";
 	$postid=$_POST['POST_ID'];
 	$query = "SELECT * FROM microposts WHERE ID=$postid";
 	$result = @ mysql_query($query,$db );
@@ -40,7 +42,7 @@ else
 
 
 $template->setVariable('MESSAGE',$message);
-$template->setVariable('ACTION',$message);
+$template->setVariable('ACTION',$action);
 
 
 
