@@ -32,7 +32,7 @@ if($nrows>0){
  		$_SESSION['name']=$tuple['name'];
 
 
- 		if($_POST['autologin']==1){
+ 		if(isset($_POST['autologin'])){
 			$query = "INSERT INTO users (remember_digest)VALUES (substr(md5(time()),0,32))";
 			$result = mysql_query($query,$db); 
 			setcookie("rememberMe", substr(md5(time()),0,32), time() + (3600 * 24 * 30), "/"); 
