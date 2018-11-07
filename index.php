@@ -30,6 +30,9 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 		$_SESSION['name']=$tuple['name'];
 		$_SESSION['id']=$tuple['id'];
 	} 
+}else{
+    unset($_COOKIE['rememberMe']);
+    setcookie('rememberMe', '', time() - 3600, '/'); // empty value and old timestamp
 }
 
 // Carrega o template Filmes2_TemplateIT.tpl
