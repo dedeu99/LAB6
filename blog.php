@@ -26,12 +26,6 @@ if(isset($_POST['POST_ID'])){
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$message =  $tuple['content'] ;
 	}
-	for($i=0; $i<$nrows; $i++) {	 	
-		$query = "SELECT name FROM users where id=".$tuple['user_id'];
-		$result2 = @mysql_query($query,$db ); 
-		$tuple2 = mysql_fetch_array($result2,MYSQL_ASSOC);
-		message= $_POST['MESSAGE'];
-	}
 }
 $template->setVariable('USERNAME',$_SESSION['name']);
 
