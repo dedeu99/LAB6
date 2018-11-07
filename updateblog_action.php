@@ -16,8 +16,8 @@ if(isset($_SESSION['postid']){
 
 	$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
-
-	$query = "UPDATE microposts SET content=$content WHERE id=$_SESSION['postid'] AND user_id=$userid";
+	$id=$_SESSION['postid'];
+	$query = "UPDATE microposts SET content=$content WHERE id=$id AND user_id=$userid";
 
 	$result = @ mysql_query($query,$db );
 
