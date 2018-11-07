@@ -18,10 +18,11 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
 $message="";
 if(isset($_POST['POST_ID'])){
-	$query = "SELECT * FROM microposts WHERE ID=$_POST['POST_ID']";
+	$postid=$_POST['POST_ID'];
+	$query = "SELECT * FROM microposts WHERE ID=$postid";
 	$result = @ mysql_query($query,$db );
 	$nrows = mysql_num_rows($result); 
-	if(nrows>0){
+	if($nrows>0){
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$message =  $tuple['content'] ;
 	}
