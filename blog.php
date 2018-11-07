@@ -20,7 +20,7 @@ $message="";
 $action="newblog_action.php";
 if(isset($_GET['POST_ID'])){
 	$action="updateblog_action.php";
-	$postid=$_POST['POST_ID'];
+	$postid=$_GET['POST_ID'];
 	$query = "SELECT * FROM microposts WHERE ID=$postid";
 	$result = @ mysql_query($query,$db );
 	$nrows = mysql_num_rows($result); 
