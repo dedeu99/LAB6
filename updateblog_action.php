@@ -8,7 +8,7 @@ if(!isset($_SESSION['name']) || !isset($_SESSION['id'])){
 }
 
 /*
-if(isset($_SESSION['postid']){
+if(isset($_SESSION['postid']){*/
 	$userid=$_SESSION['id'];
 	$content=$_POST['message'];
 
@@ -22,8 +22,8 @@ if(isset($_SESSION['postid']){
 	$result = @ mysql_query($query,$db );
 
 
-	unset($_SESSION['postid']);
-}
+	unset($_SESSION['postid']);/*
+}*/
 //$nrows = mysql_num_rows($result); 
-header("Location:index.php");*/
+header("Location:index.php");
 ?>
