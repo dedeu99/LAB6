@@ -36,7 +36,10 @@ if($nrows>0){
 			$query = "INSERT INTO users (remember_digest)VALUES (substr(md5(time()),0,32))";
 			$result = mysql_query($query,$db); 
 			setcookie("rememberMe", substr(md5(time()),0,32), time() + (3600 * 24 * 30), "/"); 
- 		}
+ 		}else{
+    		unset($_COOKIE['rememberMe']);
+    		setcookie('rememberMe', '', time() - 3600, '/'); // empty value and old timestamp
+		}
 
 
 
