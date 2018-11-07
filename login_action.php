@@ -20,10 +20,8 @@ $query = "SELECT id,name,password_digest FROM users WHERE email='$email'";
 
 
 
-//echo "<script type='text/javascript'>alert('SELECT count(*) FROM users WHERE email=\'".$email."\'');</script>";
-// executar a query
 $result = mysql_query($query,$db); 
-//var_dump($result);
+
 
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
