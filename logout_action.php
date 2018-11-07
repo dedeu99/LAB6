@@ -30,7 +30,7 @@ echo "-----".PHP_EOL;
 print_r($domain);
 
 echo PHP_EOL.basename($domain[path]).PHP_EOL*/
-if(isset($_SESSION['id'] || isset($_SESSION['name']))){
+if(isset($_SESSION['id']) || isset($_SESSION['name'])) {
 
 	session_destroy();
 	$_SESSION = array();
