@@ -16,7 +16,6 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 	$loggedin= true;
 }
 
-var_dump($_SESSION['id']);
  // Carrega o template Filmes2_TemplateIT.tpl
 $template->loadTemplatefile('index_template.html',true, true); 
 
