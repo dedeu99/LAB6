@@ -9,7 +9,7 @@ session_start();
 $name=$_POST['name'];
 $email=$_POST['email'];
 $password=hash('sha512',$_POST['password']);
-$password2=$_POShash('sha512',$_POST['passwordConfirmation'])
+$password2=$_POShash('sha512',$_POST['passwordConfirmation']);
 $min_password_length=7;
 
 
