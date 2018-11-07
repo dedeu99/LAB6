@@ -4,11 +4,15 @@
 	header('Content-Type: text/html; charset=utf-8');
 	require_once "HTML/Template/IT.php";
 	session_start();
+
+	if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+		header("Location: index.php");
+		die();
+	}
+	
+
 	$email=$_GET['email'];
 	
-	//{MESSAGE_HIDDEN}
-
-	// Cria um novo objecto template
 	$template = new HTML_Template_IT('.'); 
 	$template->loadTemplatefile('login_template.html',true, true); 
 

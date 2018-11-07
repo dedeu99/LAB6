@@ -2,16 +2,22 @@
 //FALTA VERIFICAR PASSWORD VAZIA OU NAO
 session_start();
 include 'db.php';
+session_start();
 
-	$email=$_POST['email'];
-	$password=hash('sha512',$_POST['password']);
+if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+	header("Location: index.php");
+	die();
+}
+$email=$_POST['email'];
+$password=hash('sha512',$_POST['password']);
 
 
 
-	// ligação à base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
-// criar query numa string
+
+
 $query = "SELECT id,name,password_digest FROM users WHERE email='$email'";
+
 
 
 //echo "<script type='text/javascript'>alert('SELECT count(*) FROM users WHERE email=\'".$email."\'');</script>";
@@ -26,6 +32,17 @@ if($nrows>0){
  		
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
+
+
+ 		if($_POST['autologin']==1){
+			$query = "INSERT INTO users (remember_digest)VALUES (substr(md5(time()),0,32))";
+			$result = mysql_query($query,$db); 
+			setcookie("rememberMe", substr(md5(time()),0,32), time() + (3600 * 24 * 30), "/"); 
+ 		}
+
+
+
+
  		header("Location:index.php");
  	}else
  	{

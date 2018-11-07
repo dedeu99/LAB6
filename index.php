@@ -1,4 +1,3 @@
-	
 <?php
 
 header('Content-Type: text/html; charset=utf-8');
@@ -22,7 +21,10 @@ $template->loadTemplatefile('index_template.html',true, true);
 $template->setVariable('hidden',$loggedin?'':'hidden');
 $template->setVariable('hidden2',$loggedin?'hidden':'');
 $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
-$template->setVariable('USER_ID',$_SESSION['id']);
+if(file_exists ( "img/user$userid.jpg" ))
+	$template->setVariable('USER_ID',$userid);
+else
+	$template->setVariable('USER_ID',"");
 
 
 
@@ -60,7 +62,11 @@ for($i=0; $i<$nrows; $i++) {
 
  	$template->setVariable('USER', $tuple2['name'] );
 
- 	$template->setVariable('USERID', $tuple['user_id']);
+ 	if(file_exists ( "img/user$userid.jpg" ))
+		$template->setVariable('USER_ID',$userid);
+	else
+		$template->setVariable('USER_ID',"");
+
  	$template->setVariable('UPDATED', $tuple['updated_at']);
  	$template->setVariable('CREATED', $tuple['created_at']);
 	$template->setVariable('MICROPOST', $tuple['content']);
