@@ -14,9 +14,6 @@ header('Refresh: 5; url=index.php');
 require_once "HTML/Template/IT.php";
 
 
-$referer = $_SERVER['HTTP_REFERER']; 
-$domain = parse_url($referer);
-
 
 $template = new HTML_Template_IT('.'); 
 $template->loadTemplatefile('message_template.html',true, true); 
@@ -33,8 +30,7 @@ echo "-----".PHP_EOL;
 print_r($domain);
 
 echo PHP_EOL.basename($domain[path]).PHP_EOL*/
-var_dump(basename($domain[path]));
-if(strcmp(basename($domain[path]),"index.php")==0){
+if(isset($_SESSION['id'] || isset($_SESSION['name']))){
 
 	session_destroy();
 	$_SESSION = array();
@@ -42,6 +38,8 @@ if(strcmp(basename($domain[path]),"index.php")==0){
 	$template->setVariable('MSGBACKGROUND', 'success' );
 	$name=$_GET['name'];
 	$template->setVariable('MESSAGE',"User $name has logged out sucessfully");
+	unset($_COOKIE['rememberMe']);
+    setcookie('rememberMe', '', time() - 3600, '/'); 
 }
 else{
 	$template->setVariable('MSGBACKGROUND', 'danger' );
