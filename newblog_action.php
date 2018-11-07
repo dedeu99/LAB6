@@ -16,5 +16,5 @@ $query = "INSERT INTO microposts  (content,user_id,created_at,updated_at) VALUES
 
 $result = @ mysql_query($query,$db );
 //$nrows = mysql_num_rows($result); 
-header("Location:index.php?query=INSERT INTO microposts  (content,user_id,created_at,updated_at) VALUES ($content,$userid, NOW(),NOW())");
+header("Location:index.php");
 ?>

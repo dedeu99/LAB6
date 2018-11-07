@@ -12,6 +12,7 @@ if(!isset($_SESSION['name']) || !isset($_SESSION['id'])){
 	die();
 }
 $userid=$_SESSION['id'];
+unset($_SESSION['postid']);
 
 
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
@@ -28,6 +29,7 @@ if(isset($_GET['POST_ID'])){
 	if($nrows>0){
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$message =  $tuple['content'] ;
+		$_SESSION['postid']=$postid;
 	}
 }
 
