@@ -7,11 +7,11 @@ if(!isset($_SESSION['name']) || !isset($_SESSION['id'])){
 	die();
 }
 
-
+/*
 if(isset($_SESSION['postid']){
 	$userid=$_SESSION['id'];
 	$content=$_POST['message'];
-/*
+
 
 
 	$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
@@ -22,8 +22,8 @@ if(isset($_SESSION['postid']){
 	$result = @ mysql_query($query,$db );
 
 
-	unset($_SESSION['postid']);*/
+	unset($_SESSION['postid']);
 }
 //$nrows = mysql_num_rows($result); 
-header("Location:index.php");
+header("Location:index.php");*/
 ?>
