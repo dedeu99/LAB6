@@ -11,7 +11,7 @@ if(!isset($_SESSION['name']) || !isset($_SESSION['id'])){
 	header("Location: login.php");
 	die();
 }
-
+$userid=$_SESSION['id'];
 
 
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
@@ -27,10 +27,14 @@ if(isset($_POST['POST_ID'])){
 		$message =  $tuple['content'] ;
 	}
 }
+
+$template = new HTML_Template_IT('.'); 
+$template->loadTemplatefile('blog_template.html',true, true); 
+
 $template->setVariable('USERNAME',$_SESSION['name']);
 
-if(file_exists ( "img/user$_SESSION['id'].jpg" ))
-	$template->setVariable('USER_ID',"$_SESSION['id']");
+if(file_exists ( "img/user$userid.jpg" ))
+	$template->setVariable('USER_ID',$userid);
 else
 	$template->setVariable('USER_ID',"");
 
