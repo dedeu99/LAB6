@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LAB5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="LAB3.css" type ="text/css">-->
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
+      <a class="navbar-brand" href="index.php">
+        <img src="img/img.jpg" style="width:40px;" alt="Logo">
+              </a>
+      <ul  class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="blog.php">Post a new message</a>
+        </li>
+      </ul>
+
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+
+              <span class="rounded-circle">
+                <img src="img/user{USER_ID}.jpg" style="width:40px;" alt="User Image">
+              </span>
+    {USERNAME}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout_action.php">Log Out</a>
+        </div>
+      </div> 
+    </nav>
+ 
+    <br>
+
+    <div class="container shadow ">
+      <div class="row justify-content-center align-items-center">  
+        <div class="col-sm-4">
+          <form action={ACTION} method="POST">
+            <div class="form-group text-center">
+              <h1>NEW POST</h1>
+            </div>
+            <div class="form-group">
+              <label for="namefield"><sub>Message:</sub></label>
+              <input type="textArea" id="message" class="form-control" name="message" value={MESSAGE}>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-danger">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
