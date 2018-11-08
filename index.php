@@ -19,14 +19,14 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
 
 if(isset($_COOKIE["rememberMe"])) {
-	echo "FOUND A cookie";
+	//echo "FOUND A cookie";
 	$cookie=$_COOKIE["rememberMe"];
-	echo "$cookie";
+	//echo "$cookie";
 	$query = "SELECT id,name FROM users WHERE remember_digest=\"$cookie\"";
 	$result = @mysql_query($query,$db);
 	$nrows = mysql_num_rows($result);
 	if($nrows>0){
-		echo "FOUND A VALID USER";
+		//echo "FOUND A VALID USER";
 		$loggedin= true;
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$_SESSION['name']=$tuple['name'];
@@ -34,7 +34,7 @@ if(isset($_COOKIE["rememberMe"])) {
 	}
 }else
 if(isset($_SESSION['name']) && isset($_SESSION['id'])){
-	echo "FOUND A SESSION";
+	//echo "FOUND A SESSION";
 	$loggedin= true;
 }
 
@@ -44,8 +44,9 @@ $template->loadTemplatefile('index_template.html',true, true);
 $template->setVariable('hidden',$loggedin?'':'hidden');
 $template->setVariable('hidden2',$loggedin?'hidden':'');
 $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
-if(file_exists ( "img/user$userid.jpg" ))
-	$template->setVariable('USER_ID',$userid);
+$userid=$_SESSION['id'];
+if(file_exists ( "img/user".$userid.".jpg" ))
+	$tsemplate->setVariable('USER_ID',$userid);
 else
 	$template->setVariable('USER_ID',"");
 
@@ -81,7 +82,7 @@ for($i=0; $i<$nrows; $i++) {
 
  	$template->setVariable('USER', $tuple2['name'] );
 
- 	if(file_exists ( "img/user$userid.jpg" ))
+ 	if(file_exists ( "img/user".$userid.".jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
 		$template->setVariable('USER_ID',"");

@@ -30,7 +30,6 @@ if($nrows>0){
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
 
- 		$query = "";
  		if(isset($_POST['autologin'])){
 			$query = "UPDATE users SET remember_digest = \"".substr(md5(time()),0,32)."\" WHERE id=".$tuple['id'];
 
@@ -44,7 +43,7 @@ if($nrows>0){
 
 
 
- 		header("Location:index.php?query=".$query);
+ 		header("Location:index.php");
  	}else
  	{
  		$_SESSION['error']=1;
