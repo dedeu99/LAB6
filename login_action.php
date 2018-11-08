@@ -43,7 +43,7 @@ if($nrows>0){
 
 
 
- 		header("Location:index.php");
+ 		header("Location:index.php?autologin=".isset($_POST['autologin']));
  	}else
  	{
  		$_SESSION['error']=1;
