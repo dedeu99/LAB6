@@ -91,9 +91,9 @@ for($i=0; $i<$nrows; $i++) {
 
 echo "img/user".$userid.".jpg";
 if(file_exists ( "img/user".$userid.".jpg" ))
-		$template->setVariable('USER_ID',$userid);
+		$template->setVariable('USERID',$userid);
 	else
-		$template->setVariable('USER_ID',"");
+		$template->setVariable('USERID',"");
 
  	$template->setVariable('UPDATED', $tuple['updated_at']);
  	$template->setVariable('CREATED', $tuple['created_at']);
