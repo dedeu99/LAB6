@@ -30,10 +30,10 @@ if($nrows>0){
  		$_SESSION['id']=$tuple['id'];
  		$_SESSION['name']=$tuple['name'];
 
-
+ 		$query = "";
  		if(isset($_POST['autologin'])){
 			$query = "UPDATE users SET remember_digest = ".substr(md5(time()),0,32)." WHERE id=".$tuple['id'];
-			echo "-----$query";
+
 			$result = mysql_query($query,$db); 
 			setcookie("rememberMe", substr(md5(time()),0,32), time() + (3600 * 24 * 30), "/"); 
  		}else{
@@ -44,7 +44,7 @@ if($nrows>0){
 
 
 
- 		header("Location:index.php?autologin=".isset($_POST['autologin']));
+ 		header("Location:index.php?query=".$query);
  	}else
  	{
  		$_SESSION['error']=1;
