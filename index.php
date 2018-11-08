@@ -43,7 +43,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 
 
 
-echo ".".file_exists ( "img/user".$userid.".jpg");
+echo "img/user".$userid.".jpg";
 if($loggedin && file_exists ( "img/user".$userid.".jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
