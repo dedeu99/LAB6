@@ -31,20 +31,23 @@ if(isset($_COOKIE["rememberMe"])) {
 		$loggedin= true;
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$_SESSION['name']=$tuple['name'];
-		$_SESSION['id']=$tuple['id'];
+		$userid=$tuple['id'];
+		$_SESSION['id']=$userid;
 	}
 }else
 if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 	//echo "FOUND A SESSION";
 	$loggedin= true;
 	$userid=$_SESSION['id'];
-
-if(file_exists ( "img/user$userid.jpg" ))
-	$tsemplate->setVariable('USER_ID',$userid);
-else
-	$template->setVariable('USER_ID',"");
-
 }
+
+
+
+
+if(loggedin && file_exists ( "img/user$userid.jpg" ))
+		$tsemplate->setVariable('USER_ID',$userid);
+	else
+		$template->setVariable('USER_ID',"");
 
 
 
@@ -63,8 +66,8 @@ $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
 $nrows = mysql_num_rows($result); 
 for($i=0; $i<$nrows; $i++) {
  	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
-
-	$query = "SELECT name FROM users where id=".$tuple['user_id'];
+ 	$userid=$tuple['user_id'];
+	$query = "SELECT name FROM users where id=$userid";
 	$result2 = @mysql_query($query,$db ); 
 	$tuple2 = mysql_fetch_array($result2,MYSQL_ASSOC);
 	// This is in the PHP file and sends a Javascript alert to the client
@@ -73,9 +76,9 @@ for($i=0; $i<$nrows; $i++) {
  	// trabalha com o bloco FILMES do template
  	$template->setCurrentBlock("POSTS");
 
- 	if($_SESSION['id']==$tuple['user_id']){
+ 	if($_SESSION['id']==$userid){
  		$template->setVariable('UPDATEHIDDEN', '');
- 		$template->setVariable('MICROID',$tuple[id]);
+ 		$template->setVariable('MICROID',$userid);
  	}else
  	{
  		$template->setVariable('UPDATEHIDDEN', 'hidden');
@@ -85,7 +88,7 @@ for($i=0; $i<$nrows; $i++) {
 
 
  	$template->setVariable('USER', $tuple2['name'] );
-
+ 	$userid=$tuple2[id];
  	if(file_exists ( "img/user$userid.jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
