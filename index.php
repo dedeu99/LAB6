@@ -89,7 +89,7 @@ for($i=0; $i<$nrows; $i++) {
  	$template->setVariable('USER', $message );
 
 
-echo "img/user".$userid.".jpg";
+
 if(file_exists ( "img/user".$userid.".jpg" ))
 		$template->setVariable('USERID',$userid);
 	else
