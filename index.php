@@ -14,6 +14,7 @@ session_start();
 
 // Cria um novo objecto template
 $template = new HTML_Template_IT('.'); 
+$template->loadTemplatefile('index_template.html',true, true); 
 $loggedin=false;
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd); 
 
@@ -36,19 +37,22 @@ if(isset($_COOKIE["rememberMe"])) {
 if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 	//echo "FOUND A SESSION";
 	$loggedin= true;
+	$userid=$_SESSION['id'];
+
+if(file_exists ( "img/user$userid.jpg" ))
+	$tsemplate->setVariable('USER_ID',$userid);
+else
+	$template->setVariable('USER_ID',"");
+
 }
 
-// Carrega o template Filmes2_TemplateIT.tpl
-$template->loadTemplatefile('index_template.html',true, true); 
+
 
 $template->setVariable('hidden',$loggedin?'':'hidden');
 $template->setVariable('hidden2',$loggedin?'hidden':'');
 $template->setVariable('USERNAME',$loggedin?$_SESSION['name']:'');
-$userid=$_SESSION['id'];
-if(file_exists ( "img/user".$userid.".jpg" ))
-	$tsemplate->setVariable('USER_ID',$userid);
-else
-	$template->setVariable('USER_ID',"");
+
+
 
 
 
@@ -82,7 +86,7 @@ for($i=0; $i<$nrows; $i++) {
 
  	$template->setVariable('USER', $tuple2['name'] );
 
- 	if(file_exists ( "img/user".$userid.".jpg" ))
+ 	if(file_exists ( "img/user$userid.jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
 		$template->setVariable('USER_ID',"");
