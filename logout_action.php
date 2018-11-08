@@ -20,16 +20,6 @@ $template->loadTemplatefile('message_template.html',true, true);
 
 $template->setCurrentBlock("SUCESSFORM");
 
-
-
-
-
-/*
-echo $referer.PHP_EOL;
-echo "-----".PHP_EOL;
-print_r($domain);
-
-echo PHP_EOL.basename($domain[path]).PHP_EOL*/
 if(isset($_SESSION['id']) || isset($_SESSION['name'])) {
 
 	
