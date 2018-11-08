@@ -21,7 +21,8 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 if(isset($_COOKIE["rememberMe"])) {
 	echo "FOUND A cookie";
 	$cookie=$_COOKIE["rememberMe"];
-	$query = "SELECT id,name FROM users WHERE remember_digest=$cookie";
+	echo "$cookie";
+	$query = "SELECT id,name FROM users WHERE remember_digest=\"$cookie\"";
 	$result = @mysql_query($query,$db);
 	$nrows = mysql_num_rows($result);
 	if($nrows>0){
