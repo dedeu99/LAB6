@@ -19,12 +19,13 @@ $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 
 
 if(isset($_COOKIE["rememberMe"])) {
-	
+	echo "FOUND A cookie";
 	$cookie=$_COOKIE["rememberMe"];
 	$query = "SELECT id,name FROM users WHERE remember_digest=$cookie";
 	$result = @mysql_query($query,$db);
 	$nrows = mysql_num_rows($result);
 	if($nrows>0){
+		echo "FOUND A VALID USER";
 		$loggedin= true;
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$_SESSION['name']=$tuple['name'];
@@ -32,6 +33,7 @@ if(isset($_COOKIE["rememberMe"])) {
 	}
 }else
 if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+	echo "FOUND A SESSION";
 	$loggedin= true;
 }
 
