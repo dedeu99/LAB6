@@ -32,7 +32,7 @@ if($nrows>0){
 
  		$query = "";
  		if(isset($_POST['autologin'])){
-			$query = "UPDATE users SET remember_digest = ".substr(md5(time()),0,32)." WHERE id=".$tuple['id'];
+			$query = "UPDATE users SET remember_digest = \"".substr(md5(time()),0,32)."\"" WHERE id=".$tuple['id'];
 
 			$result = mysql_query($query,$db); 
 			setcookie("rememberMe", substr(md5(time()),0,32), time() + (3600 * 24 * 30), "/"); 
