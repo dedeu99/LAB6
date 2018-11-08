@@ -88,7 +88,7 @@ for($i=0; $i<$nrows; $i++) {
 
 
  	$template->setVariable('USER', $tuple2['name'] );
- 	$userid=$tuple2[id];
+ 	$userid=$tuple2['id'];
  	if(file_exists ( "img/user$userid.jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
