@@ -44,7 +44,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 
 
 
-if(loggedin && file_exists ( "img/user$userid.jpg" ))
+if($loggedin && file_exists ( "img/user$userid.jpg" ))
 		$tsemplate->setVariable('USER_ID',$userid);
 	else
 		$template->setVariable('USER_ID',"");
@@ -87,8 +87,7 @@ for($i=0; $i<$nrows; $i++) {
 
 
 
- 	$template->setVariable('USER', $tuple2['name'] );
- 	$userid=$tuple2['id'];
+ 	$template->setVariable('USER', $message );
  	if(file_exists ( "img/user$userid.jpg" ))
 		$template->setVariable('USER_ID',$userid);
 	else
