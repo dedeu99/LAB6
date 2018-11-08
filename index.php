@@ -16,9 +16,9 @@ session_start();
 $template = new HTML_Template_IT('.'); 
 $loggedin=false;
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd); 
-if(isset($_SESSION['name']) && isset($_SESSION['id'])){
-	$loggedin= true;
-}else if(isset($_COOKIE["rememberMe"])) {
+
+
+if(isset($_COOKIE["rememberMe"])) {
 	
 	$cookie=$_COOKIE["rememberMe"];
 	$query = "SELECT id,name FROM users WHERE remember_digest=$cookie";
@@ -29,7 +29,10 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 		$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 		$_SESSION['name']=$tuple['name'];
 		$_SESSION['id']=$tuple['id'];
-	} 
+	}
+}else
+if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+	$loggedin= true;
 }
 
 // Carrega o template Filmes2_TemplateIT.tpl
