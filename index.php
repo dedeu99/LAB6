@@ -45,7 +45,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 
 
 if($loggedin && file_exists ( "img/user".$userid.".jpg" ))
-		$tsemplate->setVariable('USER_ID',$userid);
+		$template->setVariable('USER_ID',$userid);
 	else
 		$template->setVariable('USER_ID',"");
 
