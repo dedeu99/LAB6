@@ -3,13 +3,14 @@
 
 	header('Content-Type: text/html; charset=utf-8');
 	require_once "HTML/Template/IT.php";
+	session_set_cookie_params(0);
 	session_start();
 
 	if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 		header("Location: index.php");
 		die();
 	}
-	
+
 
 	$email=$_GET['email'];
 	

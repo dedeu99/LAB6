@@ -1,5 +1,5 @@
 <?php
-//FALTA VERIFICAR PASSWORD VAZIA OU NAO
+session_set_cookie_params(0);
 session_start();
 include 'db.php';
 session_start();
