@@ -77,7 +77,7 @@ for($i=0; $i<$nrows; $i++) {
  	echo $_SESSION['id']."-".$userid;
  	if($_SESSION['id']==$userid){
  		$template->setVariable('UPDATEHIDDEN', '');
- 		$template->setVariable('MICROID',$tuple['id'];);
+ 		$template->setVariable('MICROID',$tuple['id']);
  	}else
  	{
  		$template->setVariable('UPDATEHIDDEN', 'hidden');
