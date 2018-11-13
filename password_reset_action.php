@@ -17,6 +17,7 @@ $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
 	$reset_digest = substr(md5(time()),0,32);
+	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 	$name=tuple['name'];
 	$query = "UPDATE users SET reset_digest=$reset_digest, reset_sent_at=$reset_digest WHERE email=\"$email\"";
 
@@ -34,6 +35,7 @@ webmaster!
 Página Web: http://intranet.deei.fct.ualg.pt/~a62362/Lab8/
 E-mail: a62362@deei.fct.ualg.pt
 NOTA: Não responda a este email, não vai obter resposta!";
+
 	mail($email,"Password Reset",$msg);
 	header("Location:  message.php?code=1");
 
