@@ -21,7 +21,7 @@ if($nrows>0){
 }
 else{
 	$_SESSION['error']=3;
-	header("Location: password_reset.php");
+	header("Location: password_reset.php?email=$email");
 
 }
 
