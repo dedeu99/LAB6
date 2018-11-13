@@ -22,20 +22,20 @@ $template->loadTemplatefile('message_template.html',true, true);
 $template->setCurrentBlock("SUCESSFORM");
 
 if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
-	if(isset($_GET['code'])
+	if(isset($_GET['code'])){
 		switch ($_GET['code']) {
-			case '1':
+			case 1:
 				$template->setVariable('MSGBACKGROUND', 'success' );
 				$template->setVariable('MESSAGE',"Password reset activated! <br> Email sent to you :-)");
 				break;
 			
-			case '2':
+			case 2:
 				$template->setVariable('MSGBACKGROUND', 'success' );
 				$template->setVariable('MESSAGE',"Password reset successfully!");
 				break;
 			
 
-			case '3':
+			case 3:
 				$template->setVariable('MSGBACKGROUND', 'danger' );
 				$template->setVariable('MESSAGE',"ERROR: WRONG TOKEN OR TOKEN EXPIRED, PASSWORD RESET FAILED!");
 				break;
@@ -45,15 +45,13 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
 				$template->setVariable('MESSAGE',"Something went wrong with your request please try again.");
 				break;
 		}
+	}
 }else{
 	$template->setVariable('MSGBACKGROUND', 'danger' );
 	$template->setVariable('MESSAGE',"You are not supposed to be here.");
 }
+
 $template->parseCurrentBlock();
 $template->show();
-
-
-
-
 
 ?>

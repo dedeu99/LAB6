@@ -19,7 +19,7 @@ if($nrows>0){
 	$time=time();
 	$reset_digest = substr(md5($time),0,32);
 	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
-	$name=tuple['name'];
+	$name=$tuple['name'];
 	$query = "UPDATE users SET reset_digest=$reset_digest, reset_sent_at=$time WHERE email=\"$email\"";
 
 	$msg="Olá Sr.(a) $name

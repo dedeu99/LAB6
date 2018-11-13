@@ -46,8 +46,8 @@
 			break;
 
 			case 5:
-				
-				$message="Your password must be at least $_GET['chars'] characters long";
+				$i=$_GET['chars'];
+				$message="Your password must be at least $i characters long";
 			break;
 
 			default:
