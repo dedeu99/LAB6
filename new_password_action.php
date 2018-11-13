@@ -8,7 +8,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 	die();
 }
 include 'db.php';
-
+$min_password_length = 7;
 $password=$_POST['password'];
 if(strlen($password)<=0){
 	$_SESSION['error']=3;
