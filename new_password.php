@@ -20,7 +20,7 @@
 
 
 
-	$template->setVariable('TOKEN', $_GET['token'];
+	$template->setVariable('TOKEN', $_GET['token']);
 
 	$template->setVariable('MESSAGE_HIDDEN',"");
 	$message="";
