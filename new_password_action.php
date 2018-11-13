@@ -55,7 +55,7 @@ actual e a hora de envio do email*/
 	if($seconds<60*60){//LESS THAN 1 HOUR
 //o encripta e actualiza a password na base de dados		
 //o faz redirect para message.php?code=2*/
-		$query = "UPDATE users SET password=\"$password\",reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
+		$query = "UPDATE users SET password_digest=\"$password\",reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
 		$result = @ mysql_query($query,$db );
 		
 		if($result){
