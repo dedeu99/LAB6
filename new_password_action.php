@@ -40,7 +40,7 @@ if(strcmp($password,$password2)!=0){
 //verifica se o token recebido existe na base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 $token=$_POST['token'];
-$query = "SELECT * FROM users WHERE $reset_digest=\"$token\"";
+$query = "SELECT * FROM users WHERE $reset_digest=$token";
 $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
