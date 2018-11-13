@@ -34,15 +34,24 @@
 			break;
 			
 			case 2:
-				$message="Password is empty";
+				$message="Password confirmation does not match password";
 			break;
 
-			case 2:
-				$message="Password and confirmation do not match";
+			case 3:
+				$message="Please fill in your password";
+			break;
+
+			case 4:
+				$message="Please fill in your password confirmation";
+			break;
+
+			case 5:
+				
+				$message="Your password must be at least $_GET['chars'] characters long";
 			break;
 
 			default:
-			$template->setVariable('MESSAGE_HIDDEN',"hidden");
+				$template->setVariable('MESSAGE_HIDDEN',"hidden");
 
 		}
 		unset($_SESSION['error']);
