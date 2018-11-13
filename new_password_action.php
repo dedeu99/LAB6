@@ -9,7 +9,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 }
 include 'db.php';
 
-
+$password=$_POST['password'];
 if(strlen($password)<=0){
 	$_SESSION['error']=3;
 	header("Location: new_password.php");
@@ -21,7 +21,7 @@ if(strlen($password)<$min_password_length){
 	header("Location: new_password.php?chars=$min_password_length");
 	die();
 }
-
+$password2=$_POST['passwordConfirmation'];
 if(strlen($password2)<=0){
 	$_SESSION['error']=4;
 	header("Location: new_password.php");
