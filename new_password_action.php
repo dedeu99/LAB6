@@ -48,10 +48,8 @@ if($nrows>0){
 actual e a hora de envio do email*/
 	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 	$reset_at = tuple['reset_at'];
-	echo(time());
-
-	echo(time($reset_at));
-
+	
+	$seconds = strtotime($reset_at) - strtotime(date("Y-m-d H:i:s"));
 
 //o encripta e actualiza a password na base de dados
 
@@ -60,7 +58,7 @@ actual e a hora de envio do email*/
 	
 
 //o faz redirect para message.php?code=2*/
-	header("Location:  message.php?code=2");
+	header("Location:  message.php?code=2&&seconds=$seconds");
 }else
 //• em caso de insucesso
 	header("Location:  message.php?code=3");
