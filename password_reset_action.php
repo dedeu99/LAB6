@@ -12,7 +12,7 @@ include 'db.php';
 $email=$_POST['email'];
 
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
-$query = "SELECT email FROM users WHERE email=$email";
+$query = "SELECT email FROM users WHERE email=\"$email\"";
 $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
