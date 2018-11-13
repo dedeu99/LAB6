@@ -11,21 +11,7 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 
 
 
-include 'db.php';
-
 $email=$_POST['email'];
-/*
-$db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
-$query = "SELECT email FROM users WHERE email=$email";
-$result = @ mysql_query($query,$db );
-$nrows = mysql_num_rows($result); 
-if($nrows>0){
-
-
-}
-
-header("Location: password_reset.php");
-die();*/
 
 
 $template = new HTML_Template_IT('.'); 
