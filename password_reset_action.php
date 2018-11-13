@@ -22,7 +22,7 @@ if($nrows>0){
 	$name=$tuple['name'];
 	$query = "UPDATE users SET reset_digest=\"$reset_digest\", reset_sent_at=\"".date("Y-m-d H:i:s")."\" WHERE email=\"$email\"";
 	$result = @ mysql_query($query,$db );
-	//$nrows = mysql_num_rows($result); 
+	$nrows = mysql_num_rows($result); 
 	if($nrows>0){
 		$msg="Olá Sr.(a) $name
 	Para obter uma nova password clique no link
