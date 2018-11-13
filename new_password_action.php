@@ -39,7 +39,8 @@ if(strcmp($password,$password2)!=0){
 
 //verifica se o token recebido existe na base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
-$query = "SELECT * FROM users WHERE $reset_digest=\"$_POST['token']\"";
+$token=$_POST['token'];
+$query = "SELECT * FROM users WHERE $reset_digest=\"$token\"";
 $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
@@ -49,7 +50,7 @@ actual e a hora de envio do email*/
 	$reset_at = tuple['reset_at'];
 	echo(time());
 
-	echo($reset_at);
+	echo(time($reset_at));
 
 
 //o encripta e actualiza a password na base de dados
