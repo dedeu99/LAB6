@@ -42,7 +42,7 @@ if($nrows>0){
 		mail($email,"Password Reset",$msg);
 		header("Location:  message.php?code=1");
 	}else
-		header("Location:  message.php?code=-1");
+		header("Location:  message.php?code=-1&&email=$email");
 }
 else{
 	$_SESSION['error']=3;
