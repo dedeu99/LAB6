@@ -9,27 +9,25 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 }
 include 'db.php';
 $min_password_length = 7;
-$password=$_POST['password'];
-if(strlen($password)<=0){
+if(strlen($_POST['password'])<=0){
 	$_SESSION['error']=3;
 	header("Location: new_password.php");
 	die();
 }
 
-if(strlen($password)<$min_password_length){
+if(strlen($_POST['password'])<$min_password_length){
 	$_SESSION['error']=5;
 	header("Location: new_password.php?chars=$min_password_length");
 	die();
 }
-$password2=$_POST['passwordConfirmation'];
-if(strlen($password2)<=0){
+if(strlen($_POST['passwordConfirmation'])<=0){
 	$_SESSION['error']=4;
 	header("Location: new_password.php");
 	die();
 }
 
 
-if(strcmp($password,$password2)!=0){
+if(strcmp($_POST['password'],$_POST['passwordConfirmation'])!=0){
 	$_SESSION['error']=2;
 	header("Location: new_password.php");
 	die();
@@ -51,14 +49,25 @@ actual e a hora de envio do email*/
 	
 	$seconds = strtotime(date("Y-m-d H:i:s"))-strtotime($reset_at) ;
 
-//o encripta e actualiza a password na base de dados
+$password=hash('sha512',$_POST['password']);
 
-	
-	
-	
 
+	if($seconds<60*60){//LESS THAN 1 HOUR
+//o encripta e actualiza a password na base de dados		
 //o faz redirect para message.php?code=2*/
-	header("Location:  message.php?code=2&&seconds=$seconds&&date=$reset_at&&s1=".strtotime($reset_at)."&&s2=".strtotime(date("Y-m-d H:i:s")));
+		$query = "UPDATE users SET password=$password,reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
+	$result = @ mysql_query($query,$db );
+	
+	if($result){
+
+		header("Location:  message.php?code=2");
+		}
+
+	}
+	
+	header("Location:  message.php?code=3");
+
+	
 }else
 //• em caso de insucesso
 	header("Location:  message.php?code=3");

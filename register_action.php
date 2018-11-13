@@ -8,8 +8,6 @@ session_start();
 
 $name=$_POST['name'];
 $email=$_POST['email'];
-$password=hash('sha512',$_POST['password']);
-$password2=hash('sha512',$_POST['passwordConfirmation']);
 $min_password_length=7;
 
 
@@ -52,31 +50,32 @@ if($nrows!=0){
 
 
 
-if(strlen($password)<=0){
+if(strlen($_POST['password'])<=0){
 	header("Location: register.php?error=8&name=$name&email=$email");//ERROR8
 	die();
 }
 
-if(strlen($password)<$min_password_length){
+if(strlen($_POST['password'])<$min_password_length){
 	header("Location: register.php?error=10&name=$name&email=$email&chars=$min_password_length");//ERROR10
 	die();
 }
 
-if(strlen($password2)<=0){
+if(strlen($_POST['passwordConfirmation'])<=0){
 	header("Location: register.php?error=9&name=$name&email=$email");//ERROR9
 	die();
 }
 
 
-if(strcmp($password,$password2)!=0){
+if(strcmp($_POST['password'],$_POST['passwordConfirmation'])!=0){
 	header("Location: register.php?error=3&name=$name&email=$email");//ERROR3 BAD PASSWORDCONFIRMATION
 	die();
 }
 
 
 
+$password=hash('sha512',$_POST['password']);
 
-$query = "INSERT INTO users (name,email,created_at,updated_at,password_digest,remember_digest,admin) VALUES ('$name','$email',NOW(),NOW(),'$password','$password2',0)";	
+$query = "INSERT INTO users (name,email,created_at,updated_at,password_digest,remember_digest,admin) VALUES ('$name','$email',NOW(),NOW(),'$password',NULL,0)";	
 $result=@mysql_query($query,$db);
 
 if($result)
