@@ -29,7 +29,7 @@ die();*/
 
 
 $template = new HTML_Template_IT('.'); 
-$template->loadTemplatefile('login_template.html',true, true); 
+$template->loadTemplatefile('password_reset_template.html',true, true); 
 
 $template->setCurrentBlock("RESETFORM");
 
