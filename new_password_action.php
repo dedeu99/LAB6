@@ -47,7 +47,7 @@ if($nrows>0){
 /*• em caso de sucesso e se não passou mais de uma hora entre a hora
 actual e a hora de envio do email*/
 	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
-	$reset_at = tuple['reset_at'];
+	$reset_at = tuple['reset_sent_at'];
 	
 	$seconds = strtotime($reset_at) - strtotime(date("Y-m-d H:i:s"));
 
