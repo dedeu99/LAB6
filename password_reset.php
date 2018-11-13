@@ -11,7 +11,6 @@ if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 
 
 
-$email=$_POST['email'];
 
 
 $template = new HTML_Template_IT('.'); 
@@ -21,8 +20,6 @@ $template->setCurrentBlock("RESETFORM");
 
 
 
-
-$template->setVariable('EMAIL', $email);
 
 $template->setVariable('MESSAGE_HIDDEN',"");
 $message="";
