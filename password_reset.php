@@ -39,6 +39,7 @@ if(isset($_SESSION['error'])){
 		$template->setVariable('MESSAGE_HIDDEN',"hidden");
 
 	}
+	unset($_SESSION['error']);
 }
 $template->setVariable('MESSAGE', $message);
 
