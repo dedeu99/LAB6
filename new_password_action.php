@@ -50,7 +50,7 @@ actual e a hora de envio do email*/
 	$seconds = strtotime(date("Y-m-d H:i:s"))-strtotime($reset_at) ;
 
 	$password=hash('sha512',$_POST['password']);
-	$email=tuple['email'];
+	$email=$tuple['email'];
 
 	if($seconds<60*60){//LESS THAN 1 HOUR
 //o encripta e actualiza a password na base de dados		
