@@ -38,7 +38,7 @@ if(strcmp($_POST['password'],$_POST['passwordConfirmation'])!=0){
 //verifica se o token recebido existe na base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd);
 $token=$_POST['token'];
-$query = "SELECT * FROM users WHERE reset_digest=\"$token\"";
+$query = "SELECT email,reset_sent_at FROM users WHERE reset_digest=\"$token\"";
 $result = @ mysql_query($query,$db );
 $nrows = mysql_num_rows($result); 
 if($nrows>0){
@@ -50,12 +50,12 @@ actual e a hora de envio do email*/
 	$seconds = strtotime(date("Y-m-d H:i:s"))-strtotime($reset_at) ;
 
 	$password=hash('sha512',$_POST['password']);
-
+	$email=tuple['email'];
 
 	if($seconds<60*60){//LESS THAN 1 HOUR
 //o encripta e actualiza a password na base de dados		
 //o faz redirect para message.php?code=2*/
-		$query = "UPDATE users SET password=$password,reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
+		$query = "UPDATE users SET password=\"$password\",reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
 		$result = @ mysql_query($query,$db );
 		
 		if($result){
