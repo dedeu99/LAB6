@@ -47,7 +47,7 @@ actual e a hora de envio do email*/
 	$tuple = mysql_fetch_array($result,MYSQL_ASSOC);
 	$reset_at = $tuple['reset_sent_at'];
 	
-	$seconds = strtotime(date("Y-m-d H:i:s"))-strtotime($reset_at) ;
+	$seconds = time()-strtotime($reset_at) ;
 
 	$password=hash('sha512',$_POST['password']);
 	$email=$tuple['email'];
@@ -61,12 +61,13 @@ actual e a hora de envio do email*/
 		if($result){
 
 			header("Location:  message.php?code=2");
+			die();
 		}
 
 	}
 		
 	header("Location:  message.php?code=3&&seconds=$seconds&&query=$query");
-
+	die();
 		
 }else
 //• em caso de insucesso
