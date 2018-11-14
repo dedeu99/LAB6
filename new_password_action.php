@@ -61,17 +61,18 @@ actual e a hora de envio do email*/
 		if($result){
 
 			header("Location:  message.php?code=2");
-			die();
-		}
-
-	}
+			
+		}else
+			header("Location:  message.php?code=-1");
+	}else{
 		
-	header("Location:  message.php?code=3&&seconds=$seconds&&query=$query");
-	die();
+		header("Location:  message.php?code=3&&seconds=$seconds&&query=$query");//TOKEN EXPIRED
+	
+	}
 		
 }else
 //• em caso de insucesso
-	header("Location:  message.php?code=3");
+	header("Location:  message.php?code=3");//WRONG TOKEN
 
 
 
