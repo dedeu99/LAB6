@@ -52,26 +52,21 @@ actual e a hora de envio do email*/
 	$password=hash('sha512',$_POST['password']);
 	$email=$tuple['email'];
 
-	if($seconds<1){//LESS THAN 1 HOUR
-//o encripta e actualiza a password na base de dados		
-//o faz redirect para message.php?code=2*/
+	if($seconds<60*60){//LESS THAN 1 HOUR
+		//o encripta e actualiza a password na base de dados		
 		$query = "UPDATE users SET password_digest=\"$password\",reset_digest=NULL, reset_sent_at=NULL WHERE email=\"$email\"";
 		$result = @ mysql_query($query,$db );
 		
-		if($result){
-
+		if($result)//o faz redirect para message.php?code=2*/
 			header("Location:  message.php?code=2");
-			
-		}else
+		else
 			header("Location:  message.php?code=-1");
-	}else{
-		
-		header("Location:  message.php?code=3&&seconds=$seconds&&query=$query");//TOKEN EXPIRED
+	}else	
+		header("Location:  message.php?code=3");//TOKEN EXPIRED
 	
-	}
+	
 		
-}else
-//• em caso de insucesso
+}else //• em caso de insucesso
 	header("Location:  message.php?code=3");//WRONG TOKEN
 
 
