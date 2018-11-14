@@ -61,26 +61,17 @@ actual e a hora de envio do email*/
 		if($result){
 
 			header("Location:  message.php?code=2");
-			}
-
 		}
+
+	}
 		
-		header("Location:  message.php?code=3&&query=$query");
+	header("Location:  message.php?code=3&&seconds=$seconds&&query=$query");
 
 		
-	}else
-	//• em caso de insucesso
-		header("Location:  message.php?code=3");
+}else
+//• em caso de insucesso
+	header("Location:  message.php?code=3");
 
 
 
-
-
-
-
-
-
-
-
-
-	?>
+?>
