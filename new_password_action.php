@@ -12,25 +12,25 @@ $min_password_length = 7;
 
 if(strlen($_POST['password'])<=0){
 	$_SESSION['error']=3;
-	header("Location: new_password.php",(isset($_POST['token'])?"?token=".$_POST['token']:""));
+	header("Location: new_password.php".(isset($_POST['token'])?"?token=".$_POST['token']:""));
 	die();
 }
 
 if(strlen($_POST['password'])<$min_password_length){
 	$_SESSION['error']=5;
-	header("Location: new_password.php?chars=$min_password_length",(isset($_POST['token'])?"&&token=".$_POST['token']:""));
+	header("Location: new_password.php?chars=$min_password_length".(isset($_POST['token'])?"&&token=".$_POST['token']:""));
 	die();
 }
 if(strlen($_POST['passwordConfirmation'])<=0){
 	$_SESSION['error']=4;
-	header("Location: new_password.php",(isset($_POST['token'])?"?token=".$_POST['token']:""));
+	header("Location: new_password.php".(isset($_POST['token'])?"?token=".$_POST['token']:""));
 	die();
 }
 
 
 if(strcmp($_POST['password'],$_POST['passwordConfirmation'])!=0){
 	$_SESSION['error']=2;
-	header("Location: new_password.php");
+	header("Location: new_password.php".(isset($_POST['token'])?"?token=".$_POST['token']:""));
 	die();
 }
 
